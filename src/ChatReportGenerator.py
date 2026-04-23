@@ -57,8 +57,9 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxyge
 .message.sent .audio-message { background: linear-gradient(135deg, #1a56db 0%, #2c6bed 100%); }
 .audio-play-btn { width: 40px; height: 40px; border-radius: 50%; background: #2c6bed; display: flex; align-items: center; justify-content: center; cursor: pointer; flex-shrink: 0; }
 .message.sent .audio-play-btn { background: rgba(255,255,255,0.25); }
-.audio-play-btn::after { content: ""; width: 0; height: 0; border-left: 12px solid white; border-top: 7px solid transparent; border-bottom: 7px solid transparent; margin-left: 3px; }
-.audio-play-btn.playing::after { border: none; width: 4px; height: 14px; background: white; box-shadow: 6px 0 0 white; margin-left: -5px; }
+.audio-play-btn::after { content: ""; width: 0; height: 0; border-left: 10px solid white; border-top: 6px solid transparent; border-bottom: 6px solid transparent; margin-left: 2px; transition: all 0.1s; }
+.audio-play-btn.playing::after { content: ""; border: none; width: 4px; height: 14px; background: white; box-shadow: 7px 0 0 white; margin-left: -5px; border-radius: 1px; }
+.audio-play-btn.playing { background: #ff3b30 !important; transform: scale(1.1); }
 .audio-waveform-container { flex: 1; display: flex; flex-direction: column; gap: 4px; min-width: 0; }
 .audio-waveform { display: flex; align-items: center; gap: 1px; height: 24px; }
 .audio-waveform span { width: 2px; background: #b0c4de; border-radius: 1px; }
@@ -102,10 +103,10 @@ body { font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background
 .sidebar { width: 350px; flex-shrink: 0; background-color: white; border-right: 1px solid #e9edef; overflow-y: auto; }
 .main { flex: 1; display: flex; flex-direction: column; background-color: #efe7dd; background-image: url("https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png"); }
 .chat-messages { flex: 1; overflow-y: auto; padding: 20px 60px; display: flex; flex-direction: column; }
-.message { max-width: 65%; margin-bottom: 8px; padding: 6px 7px 8px 9px; border-radius: 7.5px; position: relative; font-size: 14.2px; line-height: 19px; box-shadow: 0 1px 0.5px rgba(11,20,26,0.13); word-wrap: break-word; }
+.message { max-width: 75%; margin-bottom: 8px; padding: 6px 7px 2px 9px; border-radius: 7.5px; position: relative; font-size: 14.2px; line-height: 19px; box-shadow: 0 1px 0.5px rgba(11,20,26,0.13); word-wrap: break-word; display: flex; flex-direction: column; }
 .message.received { align-self: flex-start; background-color: #ffffff; color: #111b21; border-top-left-radius: 0; margin-right: auto; }
 .message.sent { align-self: flex-end; background-color: #d9fdd3; color: #111b21; border-top-right-radius: 0; margin-left: auto; }
-.timestamp { font-size: 11px; float: right; margin-left: 10px; margin-top: 5px; color: #667781; }
+.timestamp { font-size: 11px; color: #667781; margin-top: 4px; text-align: right; align-self: flex-end; width: 100%; white-space: nowrap; }
 .chat-item { height: 72px; display: flex; align-items: center; padding: 0 15px; border-bottom: 1px solid #f0f2f5; cursor: pointer; flex-direction: row; }
 .chat-item:hover { background-color: #f5f6f6; }
 .chat-item.active { background-color: #ebebeb; border-left: 4px solid #00a884; }
@@ -121,7 +122,7 @@ body { font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background
 .sidebar-name { font-weight: 600; font-size: 15px; color: #111b21; }
 .sidebar-info { font-size: 13px; color: #667781; }
 .translation { margin-top: 6px; padding: 6px 8px; border-left: 3px solid #ffcc00; font-size: 13px; background-color: rgba(0,0,0,0.03); color: #333; border-radius: 4px; font-style: italic; }
-.date-divider { text-align: center; align-self: center; margin: 10px 0; padding: 5px 12px; background-color: rgba(255,255,255,0.9); border-radius: 7.5px; box-shadow: 0 1px 0.5px rgba(11,20,26,0.13); color: #555; font-size: 12.5px; }
+.date-divider { text-align: center; align-self: center; margin: 20px 0; padding: 6px 15px; background-color: rgba(255,255,255,0.95); border-radius: 8px; box-shadow: 0 1px 2px rgba(0,0,0,0.1); color: #111b21; font-size: 13px; font-weight: 600; text-transform: uppercase; }
 .attachment img { max-width: 200px; border-radius: 6px; margin-top: 4px; cursor: pointer; }
 .attachment video { max-width: 200px; border-radius: 8px; margin-top: 5px; }
 .attachment audio { max-width: 100%; margin-top: 5px; }
@@ -135,8 +136,9 @@ body { font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background
 .message.received .audio-message { background: linear-gradient(135deg, #f0f0f0 0%, #ffffff 100%); }
 .audio-play-btn { width: 36px; height: 36px; border-radius: 50%; background: #00a884; display: flex; align-items: center; justify-content: center; cursor: pointer; flex-shrink: 0; box-shadow: 0 1px 3px rgba(0,0,0,0.15); }
 .message.received .audio-play-btn { background: #00a884; }
-.audio-play-btn::after { content: ""; width: 0; height: 0; border-left: 10px solid white; border-top: 6px solid transparent; border-bottom: 6px solid transparent; margin-left: 2px; }
-.audio-play-btn.playing::after { border: none; width: 3px; height: 12px; background: white; box-shadow: 5px 0 0 white; margin-left: -4px; }
+.audio-play-btn::after { content: ""; width: 0; height: 0; border-left: 10px solid white; border-top: 6px solid transparent; border-bottom: 6px solid transparent; margin-left: 2px; transition: all 0.1s; }
+.audio-play-btn.playing::after { content: ""; border: none; width: 4px; height: 14px; background: white; box-shadow: 7px 0 0 white; margin-left: -5px; border-radius: 1px; }
+.audio-play-btn.playing { background: #ff3b30 !important; transform: scale(1.1); }
 .audio-waveform-container { flex: 1; display: flex; flex-direction: column; gap: 3px; min-width: 0; }
 .audio-waveform { display: flex; align-items: center; gap: 1px; height: 22px; }
 .audio-waveform span { width: 2px; background: #00a884; border-radius: 1px; opacity: 0.35; }
@@ -430,22 +432,37 @@ class WhatsAppParser(BaseParser):
         print(f"Using WhatsAppParser (Light)... Lookup size: {len(attachment_lookup) if attachment_lookup else 0}")
         wb = openpyxl.load_workbook(filepath, data_only=True)
         # Try multiple variations of the sheet name
-        sheet_name = 'Instant Messages'
-        if 'Messaggi istantanei' in wb.sheetnames:
-            sheet_name = 'Messaggi istantanei'
-        elif 'Instant Messages' in wb.sheetnames:
-            sheet_name = 'Instant Messages'
-        else:
-            # Fallback: try to find any sheet with "Instant" or "Messaggi"
-            found = False
+        sheet_name = None
+        # 1. Try known exact names (most common first)
+        for name_to_try in ['Messaggi istantanei', 'Instant Messages', 'Messages', 'Messaggi', 'Chats', 'Chat']:
+            if name_to_try in wb.sheetnames:
+                sheet_name = name_to_try
+                break
+        
+        # 2. If not found, try fuzzy search (case-insensitive substring)
+        if not sheet_name:
             for name in wb.sheetnames:
-                if "instant" in name.lower() or "messaggi" in name.lower():
+                n_low = name.lower()
+                if any(x in n_low for x in ["instant", "messaggi", "messages", "chats", "whatsapp"]):
                     sheet_name = name
-                    found = True
                     break
             
-            if not found:
-                 raise KeyError("Sheet 'Messaggi istantanei' or 'Instant Messages' not found.")
+        # 3. Last fallback: scan all sheets for the presence of typical message headers
+        if not sheet_name:
+            keywords_to_find = ["Da", "A", "From", "To", "Corpo", "Body"]
+            for name in wb.sheetnames:
+                temp_sheet = wb[name]
+                # Check first 5 rows for headers
+                for row_idx, row_content in enumerate(temp_sheet.iter_rows(max_row=5, values_only=True)):
+                    row_vals_str = [str(cell_val).lower() for cell_val in row_content if cell_val is not None]
+                    if sum(1 for k in keywords_to_find if k.lower() in row_vals_str) >= 2:
+                        sheet_name = name
+                        break
+                if sheet_name: break
+
+        if not sheet_name:
+             available_sheets = ", ".join([f"'{n}'" for n in wb.sheetnames])
+             raise KeyError(f"Foglio dei messaggi non trovato. Fogli disponibili nel file: {available_sheets}. Cercavo 'Messaggi istantanei' o simili.")
 
         print(f"Reading sheet: {sheet_name}")
         sheet = wb[sheet_name]
@@ -495,22 +512,22 @@ class WhatsAppParser(BaseParser):
                             return row[col_map[n]]
                     return None
 
-                from_val = get_col(['From', 'Da'])
-                to_val = get_col(['To', 'A'])
+                from_val = get_col(['From', 'Da', 'Sender', 'Mittente', 'Source'])
+                to_val = get_col(['To', 'A', 'Receiver', 'Destinatario', 'Destination'])
                 
                 if from_val is None and to_val is None: continue
 
-                body_val = get_col(['Body', 'Corpo'])
+                body_val = get_col(['Body', 'Corpo', 'Testo', 'Text', 'Content', 'Messaggio', 'Message'])
                 
                 # Timestamp might be split or named differently
-                time_val = get_col(['Timestamp-Time', 'Timestamp-Ora', 'Timestamp'])
+                time_val = get_col(['Timestamp-Time', 'Timestamp-Ora', 'Timestamp: Ora', 'Timestamp: Data', 'Timestamp', 'Time', 'Ora', 'Data', 'Date'])
                 
                 # Tag/Label for translation
-                tag_val = get_col(['Tag', 'Etichetta', 'Note investigative', 'Messaggio Note investigative'])
+                tag_val = get_col(['Tag', 'Etichetta', 'Note investigative', 'Messaggio Note investigative', 'Notes', 'Note'])
 
                 if from_val is None and to_val is None: continue
 
-                direction_val = get_col(['Direction', 'Orientamento', 'Type', 'Tipo'])
+                direction_val = get_col(['Direction', 'Orientamento', 'Type', 'Tipo', 'Stato', 'Status', 'Modo', 'Directionality'])
                 
                 # Source info for attachments fallback
                 source_info_val = get_col(['Informazioni sul file di origine', 'Source File Information', 'Source file information'])
@@ -577,101 +594,117 @@ class WhatsAppParser(BaseParser):
                     if n_low == "&": return False
                     return True
 
-                # Determine who is the "Owner" (Me)
-                is_p1_owner = "(proprietario)" in sender_raw.lower() or "(owner)" in sender_raw.lower()
-                is_p2_owner = "(proprietario)" in receiver_raw.lower() or "(owner)" in receiver_raw.lower()
+                participants_val = get_col(['Participants', 'Partecipanti', 'Membri'])
                 
-                # Chat ID Generation
-                parts = set(re.findall(r'(\d+@s\.whatsapp\.net)', sender_raw + " " + receiver_raw))
-                if parts:
-                    chat_id = "Chat " + "-".join(sorted([p.split('@')[0] for p in parts]))
-                else:
-                    # Use cleaned names for ID
-                    parts_list = sorted([p for p in [p1_clean, p2_clean] if is_valid_name(p)])
-                    if not parts_list:
-                        # Fallback to whatever we have if both are sconosciuto
-                        parts_list = sorted([p for p in [p1_clean, p2_clean] if p])
-                        if not parts_list: parts_list = ["Unknown"]
-                    
-                    chat_id = f"Chat {' & '.join(parts_list)}"
-                    chat_id = re.sub(r'[^\w\s\-\.]', '', chat_id)[:100]
+                # --- IDENTIFICAZIONE PROPRIETARIO E DIREZIONE (ROBUSTA) ---
+                # 1. Identifica l'ID dell'Owner dalla colonna Partecipanti (tipico di Cellebrite/forensics)
+                owner_id = ""
+                if participants_val:
+                    m_owner = re.search(r'(\d+)@s\.whatsapp\.net.*?\(proprietario\)', str(participants_val), re.I)
+                    if m_owner:
+                        owner_id = m_owner.group(1)
+                
+                # 2. Cerca tag espliciti nelle stringhe grezze di questa riga
+                tag_p1 = any(x in sender_raw.lower() for x in ["(proprietario)", "(owner)", "(device owner)"])
+                tag_p2 = any(x in receiver_raw.lower() for x in ["(proprietario)", "(owner)", "(device owner)"])
+                
+                # Se non abbiamo tag ma abbiamo l'owner_id, controlliamo se il mittente è l'owner
+                if not tag_p1 and owner_id and owner_id in sender_raw:
+                    tag_p1 = True
+                if not tag_p2 and owner_id and owner_id in receiver_raw:
+                    tag_p2 = True
+
+                # 3. Controllo colonna direzione (esteso)
+                dir_sent = None
+                if direction_val:
+                    d_str = str(direction_val).lower()
+                    # Pattern per 'Sent' / 'Inviato'
+                    if any(x in d_str for x in ["uscita", "outgoing", "sent", "inviato", "outbound", "mandato", "out"]):
+                        dir_sent = True
+                    # Pattern per 'Received' / 'Ricevuto'
+                    elif any(x in d_str for x in ["arrivo", "entrata", "incoming", "received", "ricevut", "inbound", "in"]):
+                        dir_sent = False
+                
+                # 3. Determina is_sent
+                is_sent = False
+                if tag_p1: is_sent = True
+                elif tag_p2: is_sent = False
+                elif dir_sent is not None: is_sent = dir_sent
+                
+                # 4. Inferenza proprietario (fallback)
+                is_p1_owner = tag_p1
+                is_p2_owner = tag_p2
+                if not is_p1_owner and not is_p2_owner:
+                    if is_sent: is_p1_owner = True
+                    else: is_p2_owner = True
+
+                # --- RAGGRUPPAMENTO UNICO FORZATO ---
+                chat_id = "Main_Conversation"
+                row_title = "Cronologia Completa"
 
                 # Sender Logic
                 sender = p1_clean
                 
-                # Direction Logic MOVED UP to help identify Owner
-                is_sent = False 
-                # 1. Try explicit 'Direction' column
-                if direction_val:
-                    d_str = str(direction_val).lower()
-                    if "uscita" in d_str or "outgoing" in d_str:
-                        is_sent = True
-                    elif "entrata" in d_str or "incoming" in d_str:
-                        is_sent = False
-                    # Else fall through
-                
-                # 2. Fallback to owner tag logic if direction ambiguous or not found
-                if not is_sent: # Only check if not already confirmed sent
-                     if is_p1_owner and p1_clean == sender: 
-                        is_sent = True
-
-                # IMPROVED OWNER INFERENCE
-                # If we know direction, we know who is owner (roughly)
-                # Outgoing -> Sender is Owner
-                # Incoming -> Receiver is Owner (assuming dump is from Owner's device)
-                if not is_p1_owner and not is_p2_owner:
-                    if is_sent:
-                        is_p1_owner = True # Sender is Owner
-                    else:
-                        is_p2_owner = True # Receiver is Owner
-
-                # Determine nice title for THIS row
-                row_title = ""
-                valid_names = [p for p in [p1_clean, p2_clean] if is_valid_name(p)]
-                
-                if is_p1_owner and p2_clean:
-                    row_title = p2_clean
-                elif is_p2_owner and p1_clean:
-                    row_title = p1_clean
-                elif len(valid_names) == 1:
-                    row_title = valid_names[0]
-                elif len(valid_names) >= 2:
-                    row_title = " & ".join(valid_names)
-                else:
-                    # Both invalid/sconosciuto
-                    row_title = "Chat Sconosciuta"
-
                 if chat_id not in chats:
                     chats[chat_id] = {
                         "id": chat_id,
-                        "participants": row_title, 
+                        "participants": "Cronologia Completa", 
                         "owner": "Unknown",
+                        "contacts": set(), # Temporary storage for interlocutors
                         "messages": []
                     }
-                else:
-                    # Update title if current one is bad and new one is better
-                    curr_title = chats[chat_id]["participants"]
-                    
-                    # Logic: If current title is "Name & Name" (Ambiguous) but now we have a definitive single partner, overwrite it!
-                    is_ambiguous = " & " in curr_title
-                    is_better = " & " not in row_title and row_title != "Chat Sconosciuta"
-                    
-                    if ("sconosciuta" in curr_title.lower() or "unknown" in curr_title.lower()) and \
-                       ("sconosciuta" not in row_title.lower() and "unknown" not in row_title.lower()):
-                            chats[chat_id]["participants"] = row_title
-                    elif is_ambiguous and is_better:
-                            chats[chat_id]["participants"] = row_title
                 
-                # Update Owner if found
-                current_owner = chats[chat_id]["owner"]
-                if current_owner == "Unknown" or current_owner == "Proprietario":
-                    if is_p1_owner:
-                        chats[chat_id]["owner"] = p1_clean
-                    elif is_p2_owner:
-                        chats[chat_id]["owner"] = p2_clean
+                # Identify Contact (Interlocutor)
+                if not is_p1_owner and p1_clean:
+                    chats[chat_id]["contacts"].add(p1_clean)
+                if not is_p2_owner and p2_clean:
+                    chats[chat_id]["contacts"].add(p2_clean)
+                
+                # Update global chat owner if we found it in this row
+                if chats[chat_id]["owner"] == "Unknown":
+                    if is_p1_owner: chats[chat_id]["owner"] = p1_clean
+                    elif is_p2_owner: chats[chat_id]["owner"] = p2_clean
 
+                # --- RILEVAMENTO ALLEGATI ---
+                att_info = ""
+                att_val = get_col(['Attachment', 'Allegato', 'Allegato #1'])
+                if att_val: att_info = str(att_val).strip()
+                
+                # Fallback: Scansione di tutte le celle della riga per trovare riferimenti a video o immagini
+                if not att_info:
+                    for idx, cell_val in enumerate(row):
+                        cv_str = str(cell_val).lower()
+                        if any(x in cv_str for x in ['.mp4', '.mov', '.avi', '.jpg', '.png', '.opus', '.amr', '.wav']):
+                            m_f = re.search(r'([^\\/:*?"<>|\r\n]+\.(?:mp4|mov|avi|jpg|png|webp|heic|opus|amr|wav))', cv_str, re.I)
+                            if m_f:
+                                att_info = m_f.group(1).strip()
+                                break
                 
                 body = clean_text(body_val)
+                ts_str = str(time_val) if time_val else ""
+                
+                # Se il timestamp è vuoto o incompleto, proviamo a unire Data e Ora separate
+                if len(ts_str) < 10:
+                    d_val = get_col(['Timestamp: Data', 'Data', 'Date'])
+                    t_val = get_col(['Timestamp: Ora', 'Ora', 'Time'])
+                    if d_val and t_val:
+                        ts_str = f"{d_val} {t_val}"
+                elif ":" not in ts_str:
+                    # Se abbiamo preso solo la data, cerchiamo l'ora
+                    t_val = get_col(['Timestamp: Ora', 'Ora', 'Time'])
+                    if t_val: ts_str = f"{ts_str} {t_val}"
+                
+                # Pulizia timestamp per visualizzazione: DATE e ORA
+                display_time = re.sub(r'\(UTC.*?\)', '', ts_str).strip()
+                # Formattazione richiesta: gg/mm/aaaa - hh:mm:ss
+                display_time = re.sub(r'(\d{1,4}[-/]\d{1,4}[-/]\d{1,4})\s+(\d{1,2}:\d{1,2}(?::\d{1,2})?)', r'\1 - \2', display_time)
+                
+                # Finalizzazione is_sent
+                is_sent = False
+                if tag_p1: is_sent = True
+                elif tag_p2: is_sent = False
+                elif dir_sent is not None: is_sent = dir_sent
+                
 
                 # Call Log Formatting
                 # Example: "Vlora (...) started a call. status: Missed type: audio call duration: 00:00:00 ..."
@@ -758,7 +791,7 @@ class WhatsAppParser(BaseParser):
                 if not att_info:
                     try:
                         # Common image/video extensions
-                        exts = r"(?:jpg|jpeg|png|gif|webp|bmp|heic|heif|tif|tiff|mp4|webm|mov|avi|mkv|3gp|m4v)"
+                        exts = r"(?:jpg|jpeg|png|gif|webp|bmp|heic|heif|tif|tiff|mp4|webm|mov|avi|mkv|3gp|m4v|qt)"
                         # Debug image detection
                         if any(x in source_info.lower() for x in ['.jpg', '.jpeg', '.png', '.mp4']):
                              print(f"DEBUG: Potential media checking: {source_info[:50]}...")
@@ -852,7 +885,7 @@ class WhatsAppParser(BaseParser):
                     "sender": sender,
                     "is_sent": is_sent,
                     "body": body,
-                    "time": ts_str,
+                    "time": display_time, # Usiamo il tempo pulito per visualizzazione e calcolo
                     "att": att_info,
                     "trans": translation
                 })
@@ -861,6 +894,20 @@ class WhatsAppParser(BaseParser):
                 # print(f"Row error: {e}")
                 pass
         
+        # Post-processing: Finalize Chat Title based on collected contacts
+        for cid, cdata in chats.items():
+            if cdata.get("contacts"):
+                # Join unique contacts, filter out "Unknown" and System identifiers
+                system_terms = ['unknown', 'sconosciuto', 'sistema', 'system', 'whatsapp', 'signal', 'telegram', 'service', 'servizio']
+                valid_contacts = [c for c in cdata["contacts"] if not any(term in c.lower() for term in system_terms)]
+                
+                if valid_contacts:
+                    cdata["participants"] = " & ".join(sorted(valid_contacts)[:3]) # Max 3 names
+                    if len(valid_contacts) > 3:
+                        cdata["participants"] += "..."
+                else:
+                    cdata["participants"] = "Cronologia Completa" # Fallback if only system messages
+            
         return chats
 
 # ==========================================
@@ -953,9 +1000,9 @@ class HTMLRenderer:
                         _, ext_raw = os.path.splitext(bname)
                         ext = ext_raw.replace('.', '').lower().strip()
                         
-                        img_exts_c = ['jpg', 'jpeg', 'png', 'gif', 'webp', 'bmp', 'svg', 'heic']
-                        vid_exts_c = ['mp4', 'webm', 'ogg', 'mov', 'avi', 'mkv']
-                        doc_exts_c = ['pdf', 'doc', 'docx', 'xls', 'xlsx', 'ppt', 'pptx', 'txt', 'rtf', 'csv', 'zip', 'rar']
+                        img_exts_c = ['jpg', 'jpeg', 'png', 'gif', 'webp', 'bmp', 'svg', 'heic', 'heif', 'tiff']
+                        vid_exts_c = ['mp4', 'webm', 'ogg', 'mov', 'avi', 'mkv', '3gp', 'm4v', 'qt']
+                        doc_exts_c = ['pdf', 'doc', 'docx', 'xls', 'xlsx', 'ppt', 'pptx', 'txt', 'rtf', 'csv', 'zip', '7z', 'rar']
                         
                         if ext in img_exts_c:
                             media_collector['images'].append({'src': rpath, 'name': bname, 'msg_id': msg_id})
@@ -981,54 +1028,71 @@ class HTMLRenderer:
 
                 msg_class = "sent" if msg["is_sent"] else "received"
                 
+                # Visualizzazione mittente: preferiamo sempre il nome originale salvato nel messaggio
                 sender_disp = msg["sender"]
-                if msg["is_sent"]: 
-                    sender_disp = owner_name if owner_name and owner_name != "Unknown" else "Tu"
-                else:
-                    # Received: prefer contact name over number
-                    sender_disp = contact_name if contact_name else sender_disp
-
+                if not sender_disp or sender_disp == "Unknown":
+                    if msg["is_sent"]: sender_disp = owner_name if owner_name != "Unknown" else "Tu"
+                    else: sender_disp = contact_name
+                
+                # Se siamo in modalità Cronologia Unica, forziamo la visualizzazione del nome per tutti
                 sender_div = f'<div class="sender-name">{sender_disp}</div>'
+                
+                # Timestamp completo di DATA e ORA
+                ts_disp = msg['time'] # Contiene già "GG/MM/AAAA HH:MM:SS"
                 
                 # Attachment
                 att_html = ""
                 if msg["att"]:
                     basename = os.path.basename(msg["att"])
+                    # Se non ha estensione, proviamo a cercarlo comunque nel file_map
+                    if '.' not in basename:
+                        # Ricerca parziale nel file_map
+                        for f_name in self.file_map:
+                            if basename in f_name:
+                                basename = f_name
+                                break
+
                     if basename in self.file_map:
                         rel_path = self.file_map[basename]
                         _, ext_raw = os.path.splitext(basename)
                         ext = ext_raw.replace('.', '').lower().strip()
                         
-                        img_exts = ['jpg', 'jpeg', 'png', 'gif', 'webp', 'bmp', 'svg', 'ico', 'tif', 'tiff', 'heic', 'heif', 'mms', 'mms_']
-                        vid_exts = ['mp4', 'webm', 'ogg', 'mov', 'qt', 'avi', 'mkv', 'm4v', '3gp']
+                        img_exts = ['jpg', 'jpeg', 'png', 'gif', 'webp', 'bmp', 'svg', 'ico', 'tif', 'tiff', 'heic', 'heif']
+                        vid_exts = ['mp4', 'webm', 'ogg', 'mov', 'qt', 'avi', 'mkv', 'm4v', '3gp', 'mpeg', 'mpg']
                         aud_exts = ['mp3', 'wav', 'aac', 'm4a', 'amr', 'opus', 'oga', 'flac']
 
                         if ext in img_exts:
                             att_html = f'''
                             <div class="attachment">
-                                <img src="{rel_path}" onclick="openLightbox('{rel_path}', 'image', '{basename}')" title="{basename}" style="cursor:pointer;" onerror="this.style.display='none'; this.parentNode.innerHTML='<a href={rel_path} target=_blank>📷 {basename} (Caricamento fallito)</a>'">
+                                <img src="{rel_path}" onclick="openLightbox('{rel_path}', 'image', '{basename}')" title="{basename}" style="cursor:pointer;" onerror="this.style.display='none'; this.parentNode.innerHTML='<a href={rel_path} target=_blank>📷 {basename}</a>'">
                             </div>
                             '''
                         elif ext in vid_exts:
                             att_html = f'''
-                            <div class="attachment video-attachment" onclick="openLightbox('{rel_path}', 'video', '{basename}')" style="cursor:pointer; position:relative;">
-                                <video src="{rel_path}" style="max-width:300px; max-height:300px; border-radius:10px; pointer-events:none;" preload="metadata"></video>
-                                <div class="video-play-overlay" style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); background:rgba(0,0,0,0.6); color:white; width:50px; height:50px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:20px;">▶</div>
+                            <div class="attachment video-attachment" onclick="window.open('{rel_path}', '_blank')" style="cursor:pointer; position:relative; background:#000; border-radius:10px; overflow:hidden; display:inline-block;">
+                                <video src="{rel_path}" style="max-width:320px; max-height:240px; display:block;" preload="metadata" muted></video>
+                                <div class="video-play-overlay" style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); background:rgba(0,0,0,0.6); color:white; width:45px; height:45px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:18px;">▶</div>
                             </div>
                             '''
                         elif ext in aud_exts:
-                            # Skip if handled by custom Opus player (Visual Waveform)
-                            is_special_opus = (ext == 'opus' and msg.get("trans") and not str(msg.get("body", "")).strip())
+                            # Use specialized Audio UI for all voice/audio files
+                            audio_id = f"aud-{idx}-{chat_id}"
+                            waveform_spans = "<span></span>" * 60
                             
-                            if not is_special_opus:
-                                att_html = f'''
-                                <div class="attachment">
-                                    <audio controls style="max-width:300px;">
-                                        <source src="{rel_path}">
-                                        <a href="{rel_path}">🎵 {basename}</a>
-                                    </audio>
+                            att_html = f'''
+                            <div class="attachment">
+                                <div class="audio-message" onclick="playAudio(this, '{audio_id}')" style="cursor:pointer; max-width:300px;">
+                                    <div class="audio-play-btn"></div>
+                                    <div class="audio-waveform-container">
+                                        <div class="audio-waveform">
+                                            {waveform_spans}
+                                        </div>
+                                        <div class="audio-duration">Messaggio Vocale ({basename})</div>
+                                    </div>
+                                    <audio id="{audio_id}" src="{rel_path}" hidden></audio>
                                 </div>
-                                '''
+                            </div>
+                            '''
                         else:
                             att_html = f'<div class="attachment"><a href="{rel_path}" target="_blank">📄 {basename}</a></div>'
                 
@@ -1127,7 +1191,7 @@ class HTMLRenderer:
                         {att_html}
                     </div>
                     {trans_html}
-                    <div class="timestamp">{msg['time']}</div>
+                    <div class="timestamp" title="{ts_disp}">{ts_disp}</div>
                 </div>
                 """
                 
@@ -1314,52 +1378,68 @@ class HTMLRenderer:
                     performSearch('');
                 }}
                 
-                function playAudio(btn, audioId) {{
+                function playAudio(btnContainer, audioId) {{
                     var audio = document.getElementById(audioId);
                     if (!audio) return;
                     
-                    // Attach progress listener
+                    var playBtn = btnContainer.querySelector('.audio-play-btn');
+                    if (!playBtn) playBtn = btnContainer; // fallback
+                    
+                    // Attach progress listener only once
                     if (!audio.dataset.hasListener) {{
                         audio.addEventListener('timeupdate', function() {{
                              var pct = audio.currentTime / audio.duration;
-                             var container = btn.nextElementSibling;
-                             if(container && container.classList.contains('audio-waveform-container')) {{
-                                 var waveform = container.querySelector('.audio-waveform');
-                                 if(waveform) {{
-                                     var spans = waveform.children;
-                                     var total = spans.length;
-                                     var activeCount = Math.ceil(total * pct);
-                                     for(var i=0; i<total; i++) {{
-                                         if(i <= activeCount) spans[i].classList.add('played');
-                                         else spans[i].classList.remove('played');
-                                     }}
+                             var waveform = btnContainer.querySelector('.audio-waveform');
+                             if(waveform) {{
+                                 var spans = waveform.children;
+                                 var total = spans.length;
+                                 var activeCount = Math.ceil(total * pct);
+                                 for(var i=0; i<total; i++) {{
+                                     if(i <= activeCount) spans[i].classList.add('played');
+                                     else spans[i].classList.remove('played');
                                  }}
                              }}
                         }});
+                        
+                        audio.addEventListener('ended', function() {{
+                            playBtn.classList.remove('playing');
+                        }});
+                        audio.addEventListener('pause', function() {{
+                            playBtn.classList.remove('playing');
+                        }});
+                        audio.addEventListener('play', function() {{
+                            playBtn.classList.add('playing');
+                        }});
+                        
                         audio.dataset.hasListener = "true";
                     }}
                     
                     if (audio.paused) {{
-                        try {{
-                           document.querySelectorAll('audio').forEach(function(a){{ if(a.id!==audioId) {{ a.pause(); }} }});
-                        }} catch(e){{}}
+                        // Pause all other audio first
+                        document.querySelectorAll('audio').forEach(function(a){{ 
+                            if(a.id !== audioId) {{ 
+                                a.pause(); 
+                                // Reset other buttons
+                                var otherBtn = document.querySelector('.audio-play-btn.playing');
+                                if(otherBtn) otherBtn.classList.remove('playing');
+                            }} 
+                        }});
                         
-                        audio.play();
-                        btn.classList.add('playing');
+                        // Play with promise handling to avoid UI blocking/errors
+                        var playPromise = audio.play();
+                        if (playPromise !== undefined) {{
+                            playPromise.then(_ => {{
+                                // Automatic playback started
+                                playBtn.classList.add('playing');
+                            }}).catch(error => {{
+                                console.error("Audio playback error:", error);
+                                playBtn.classList.remove('playing');
+                            }});
+                        }}
                     }} else {{
                         audio.pause();
-                        btn.classList.remove('playing');
+                        playBtn.classList.remove('playing');
                     }}
-                    
-                    audio.onended = function() {{
-                        btn.classList.remove('playing');
-                    }};
-                    audio.onpause = function() {{
-                        btn.classList.remove('playing');
-                    }};
-                    audio.onplay = function() {{
-                        btn.classList.add('playing');
-                    }};
                 }}
             </script>
         </head>
@@ -1431,11 +1511,11 @@ class HTMLRenderer:
                         grid.appendChild(div);
                     }});
                     
-                    // Videos with play icon overlay
+                    // Videos with direct open
                     videos.forEach(item => {{
                         const div = document.createElement('div');
                         div.className = 'gallery-item video-item';
-                        div.onclick = function() {{ openLightbox(item.src, 'video', item.name); }};
+                        div.onclick = function() {{ window.open(item.src, '_blank'); }};
                         div.innerHTML = `<video src="${{item.src}}" preload="metadata"></video><div class="video-play-overlay">▶</div>`;
                         grid.appendChild(div);
                     }});
@@ -1581,8 +1661,18 @@ def build_chat_attachment_map(filepath):
     """
     try:
         wb = openpyxl.load_workbook(filepath, data_only=True)
-        if 'Chat' not in wb.sheetnames: return {}
-        sheet = wb['Chat']
+        sheet_name = 'Chat'
+        if sheet_name not in wb.sheetnames:
+            # Try fuzzy match for any sheet containing 'chat' or 'messaggi'
+            for n in wb.sheetnames:
+                if 'chat' in n.lower() or 'messaggi' in n.lower():
+                    sheet_name = n
+                    break
+            else:
+                # No suitable sheet found for attachment mapping
+                return {}
+                
+        sheet = wb[sheet_name]
         rows = list(sheet.iter_rows(values_only=True))
         
         # Simple/Safe header detection
@@ -1632,7 +1722,7 @@ def build_chat_attachment_map(filepath):
         print(f"Error building attachment map: {e}")
         return {}
 
-def run_generation(input_file, style="signal", source_type="chats", output_dir=None, format_type="auto"):
+def run_generation(input_file, style="signal", output_dir=None):
     input_path = os.path.abspath(input_file)
     base_dir = os.path.dirname(input_path)
     
@@ -1646,26 +1736,76 @@ def run_generation(input_file, style="signal", source_type="chats", output_dir=N
     print(f"Input: {input_path}")
     print(f"Output: {out_dir}")
     print(f"Style: {style}")
-    print(f"Source Mode: {source_type}")
 
-    # 1. Determine Parser based on Source Type
-    parser_impl = None
-    att_lookup = None
-    
-    if source_type == "instant":
-        print("Using Instant Messages Parser...")
-        # Build attachment lookup from 'Chat' tab
-        print("Building Attachment Lookup from 'Chat' tab...")
-        att_lookup = build_chat_attachment_map(input_path)
-        print(f"Attachment Lookup Built: {len(att_lookup)} entries.")
+    # 1. Automatic Parser Detection (Robust Structure Analysis)
+    print("Analisi file per rilevamento intelligente del formato...")
+    try:
+        wb = openpyxl.load_workbook(input_path, read_only=True, data_only=True)
         
-        parser_impl = WhatsAppParser() # Uses 'Instant Messages' tab logic
-        chats = parser_impl.parse(input_path, attachment_lookup=att_lookup)
-    else:
-        print("Using Standard Chat Parser...")
-        parser_impl = CellebriteParser() # Uses 'Chat' tab logic
+        best_sheet = None
+        is_instant_format = False
+        
+        # Keywords for "Instant Messages" style columns
+        im_keywords = ['da', 'a', 'from', 'to', 'corpo', 'body', 'testo', 'text', 'sender', 'receiver']
+        
+        # Priority sheets list
+        priority_sheets = ['Messaggi istantanei', 'Instant Messages', 'Messages', 'Messaggi', 'Chat', 'Chats']
+        search_sheets = priority_sheets + [n for n in wb.sheetnames if n not in priority_sheets]
+        
+        for name in search_sheets:
+            if name not in wb.sheetnames: continue
+            
+            sheet = wb[name]
+            # Read first few rows to check headers
+            rows = list(sheet.iter_rows(max_row=10, values_only=True))
+            if not rows: continue
+            
+            for row in rows:
+                row_vals = [str(c).lower() for c in row if c is not None]
+                
+                # Check for "Instant Messages" format
+                matches = sum(1 for k in im_keywords if k in row_vals)
+                if matches >= 2:
+                    best_sheet = name
+                    is_instant_format = True
+                    print(f"Rilevato formato 'Messaggi Istantanei' nel foglio: '{name}'")
+                    break
+                
+                # Check for "Cellebrite Standard" format (ID in first columns, fixed structure)
+                if len(row_vals) > 30 and 'id' in row_vals[:5] and any(x in row_vals for x in ['participants', 'partecipanti']):
+                    best_sheet = name
+                    is_instant_format = False
+                    print(f"Rilevato formato 'Cellebrite Standard' nel foglio: '{name}'")
+                    break
+            
+            if best_sheet: break
+        
+        wb.close()
+        
+        if is_instant_format:
+            # Build attachment lookup from 'Chat' tab if possible
+            att_lookup = build_chat_attachment_map(input_path)
+            parser_impl = WhatsAppParser() 
+            chats = parser_impl.parse(input_path, attachment_lookup=att_lookup)
+        else:
+            parser_impl = CellebriteParser() 
+            chats = parser_impl.parse(input_path)
+            
+    except Exception as e:
+        print(f"Errore durante il rilevamento: {e}. Provo fallback su CellebriteParser.")
+        parser_impl = CellebriteParser()
         chats = parser_impl.parse(input_path)
-    print(f"Parsed {len(chats)} chats.")
+
+    if not chats:
+        print("ATTENZIONE: Nessun messaggio trovato con il parser selezionato. Provo l'altro parser...")
+        try:
+             if is_instant_format:
+                 chats = CellebriteParser().parse(input_path)
+             else:
+                 chats = WhatsAppParser().parse(input_path, attachment_lookup={})
+        except: pass
+
+    print(f"Parsati {len(chats)} thread di conversazione.")
     
     # 3. Scan attachments
     file_map = process_attachments(base_dir, out_dir)
@@ -1724,12 +1864,6 @@ class App:
         tk.Radiobutton(frame_opts, text="Signal (Blue)", variable=self.var_style, value="signal", bg="#f0f0f0").grid(row=0, column=1)
         tk.Radiobutton(frame_opts, text="WhatsApp (Green)", variable=self.var_style, value="whatsapp", bg="#f0f0f0").grid(row=0, column=2)
         
-        # Source
-        tk.Label(frame_opts, text="Sorgente:", bg="#f0f0f0", font=font_label).grid(row=1, column=0, padx=5, sticky="w", pady=5)
-        self.var_source = tk.StringVar(value="chats")
-        tk.Radiobutton(frame_opts, text="Chat (Standard)", variable=self.var_source, value="chats", bg="#f0f0f0").grid(row=1, column=1, sticky="w")
-        tk.Radiobutton(frame_opts, text="Messaggi Istantanei", variable=self.var_source, value="instant", bg="#f0f0f0").grid(row=1, column=2, sticky="w")
-        
         # 3. Action
         frame_action = tk.Frame(root, bg="#f0f0f0", pady=20)
         frame_action.pack(fill=tk.X, padx=20)
@@ -1766,19 +1900,18 @@ class App:
             return
             
         style = self.var_style.get()
-        source = self.var_source.get()
         
         # Disable button
         self.btn_open.config(state=tk.DISABLED)
         
-        t = threading.Thread(target=self.run_process, args=(input_path, style, source))
+        t = threading.Thread(target=self.run_process, args=(input_path, style))
         t.start()
         
-    def run_process(self, input_path, style, source):
+    def run_process(self, input_path, style):
         print("--- Inizio Elaborazione ---")
         try:
             # Determine output automatically (same dir)
-            out_dir = run_generation(input_path, style=style, source_type=source, output_dir=None)
+            out_dir = run_generation(input_path, style=style, output_dir=None)
             self.last_output_dir = out_dir
             
             self.root.after(0, lambda: self.finish_success())
@@ -1813,7 +1946,7 @@ def main():
         parser.add_argument("--format", choices=["auto", "cellebrite", "whatsapp"], default="auto", help="Input format")
         
         args = parser.parse_args()
-        run_generation(args.input_file, args.style, args.output, args.format)
+        run_generation(args.input_file, args.style, args.output)
     else:
         # GUI Mode
         root = tk.Tk()
